@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roller Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #3498db; /* Set your preferred background color */
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        header {
+            background-color: #2980b9; /* Set your preferred header background color */
+            padding: 1em;
+            color: #fff;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        main {
+            padding: 2em;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            background-color: #27ae60; /* Set your preferred button background color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #219653; /* Set your preferred button hover background color */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Dice Roller Game
+    </header>
+    <main>
+        <img id="diceImage" src="{{ dice_image }}" alt="Dice Image">
+        <br>
+        <form id="rollForm" method="post" action="/roll">
+            <button type="button" onclick="rollDice()">Roll the Dice</button>
+        </form>
+    </main>
+    <script>
+        function rollDice() {
+            document.forms['rollForm'].submit();
+        }
+    </script>
+</body>
+</html>

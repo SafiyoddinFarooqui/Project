@@ -1,0 +1,21 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body style="background: linear-gradient(to right, #ff7e5f, #feb47b, #ffd082);">
+
+    <div>
+        <h1>Welcome to the Weather App</h1>
+        <form action="/weather" method="post">
+            <label for="city">Enter City:</label>
+            <input type="text" id="city" name="city" required>
+            <button type="submit">Get Weather</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!-- templates/weather.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Information</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #87CEEB, #FFD700);
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        div {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Weather Information</h1>
+
+    <div>
+        <p><strong>Weather Main:</strong> {{ data.weather_main }}</p>
+        <p><strong>Weather Description:</strong> {{ data.weather_description }}</p>
+        <p><strong>Temperature:</strong> {{ data.temperature }} °C</p>
+        <p><strong>Pressure:</strong> {{ data.pressure }} hPa</p>
+    </div>
+
+    <a href="/">Go back to home</a>
+
+</body>
+</html>

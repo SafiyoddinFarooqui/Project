@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<style>
+    body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    color: #009688;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #009688;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #00796b;
+}
+
+#short-link {
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #009688;
+}
+
+</style>
+
+<body>
+    <h2>URL Shortener</h2>
+    <form id="urlForm">
+        <label for="long_url">Enter Long URL:</label>
+        <input type="text" id="long_url" name="long_url" placeholder="https://www.example.com" required>
+        <br>
+        <button type="submit">Convert</button>
+    </form>
+    <div id="short-link"></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('urlForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        // Get the long URL entered by the user
+        var longUrl = document.getElementById('long_url').value;
+
+        // Send a POST request to the Flask backend to convert the URL
+        var response = await fetch('/convert', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                'long_url': longUrl,
+            }),
+        });
+
+        if (!response.ok) {
+            console.error('Failed to convert URL.');
+            alert('Failed to convert URL. Please try again.');
+            return;
+        }
+
+        var data = await response.json();
+
+        // Display the short link to the user
+        var shortLinkDiv = document.getElementById('short-link');
+        shortLinkDiv.innerHTML = `<p>This is your short link:</p><a href="${data.short_url}" target="_blank">${data.short_url}</a>`;
+    });
+});
+
+    </script>
+
+
+</body>
+
+</html>

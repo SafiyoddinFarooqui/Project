@@ -1,0 +1,10 @@
+{% for article in articles %}
+    <li>
+        <h3>{{ article.title }}</h3>
+        {% if article.urlToImage %}
+            <img src="{{ article.urlToImage }}" alt="{{ article.title }}" style="max-width: 100%;">
+        {% endif %}
+        <p>{{ article.description }}</p>
+        <a href="{{ article.url }}" target="_blank">Read more</a>
+    </li>
+{% endfor %}
